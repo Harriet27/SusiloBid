@@ -20,7 +20,7 @@ const AddProduct = () => {
     desc: '',
     price: '',
     due_date: '',
-    image: ''
+    image: '',
   });
 
   const loading = useSelector(({ auth }) => auth.loading);
@@ -29,11 +29,10 @@ const AddProduct = () => {
   const handleChange = e => {
     if (e){
       setFormInput({
-            ...formInput,
-            [e.target.name] : e.target.value
-        });
+        ...formInput,
+        [e.target.name] : e.target.value
+      });
     }
-        
   }
 
   const handleImage = e => {
