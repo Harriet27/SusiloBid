@@ -1,7 +1,10 @@
 .myModal {
-    width: 17% !important;
-    left: 80rem !important;
-    top: 2.813rem !important;
+    width: 25% !important;
+    height: 60% !important;
+    left: 70vw !important;
+    top: 5vh !important;
+    /* border-radius: 20%;
+    overflow: hidden; */
 }
 
 .search-btn:hover {

@@ -14,12 +14,12 @@ import io from 'socket.io-client';
 
 // style
 import { Tabs, Tab, Form, Button } from 'react-bootstrap';
-import { Segment } from 'semantic-ui-react';
+// import { Segment } from 'semantic-ui-react';
 import Loader from "react-loader-spinner";
 import Swal from 'sweetalert2';
 
 const WalletPage = () => {
-  
+
   const dispatch = useDispatch();
 
   const role = useSelector(({ auth }) => auth.role_id);
@@ -39,12 +39,13 @@ const WalletPage = () => {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
+    document.title = 'Top Up Wallet';
     dispatch(checkStatus(userId));
-  }, [userId]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (status === 'Banned') dispatch(Logout());
-  }, [status]);
+  }, [dispatch, status]);
   
   useEffect(() => {
     if (userId) dispatch(WalletAction(userId));
@@ -66,7 +67,7 @@ const WalletPage = () => {
       // setMessage(res.data[0].messages)
     })
     .catch(e => console.log(e))
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     setWallet(gWallet);
@@ -121,16 +122,16 @@ const WalletPage = () => {
     }
   };
 
-  const renderVerification = () => {
-    if (message) {
-      return message.map((val, idx) => {
-        return (
-          <p key={idx} style={{ color: '#009C95' }}>{val.messages}</p>
-        );
-      });
-    }
-    return <p style={{ color: '#009C95' }}>Empty</p>
-  };
+  // const renderVerification = () => {
+  //   if (message) {
+  //     return message.map((val, idx) => {
+  //       return (
+  //         <p key={idx} style={{ color: '#009C95' }}>{val.messages}</p>
+  //       );
+  //     });
+  //   }
+  //   return <p style={{ color: '#009C95' }}>Empty</p>
+  // };
 
   if (role === 1) {
     return <Redirect to='/internal' />
@@ -138,41 +139,48 @@ const WalletPage = () => {
   if (!logged) {
     return <Redirect to='/' /> 
   }
-  return ( 
-    <div className="container mt-5 p-3" style={{ width: "45%", borderRadius: 8, border: "1px solid #009C95", backgroundColor: "#009C95" }}>
-      <p className="h2 text-center" style={{ color: "#fff" }}>Your Wallet</p>
-      <p className="h2 text-center" style={{ color: "#fff" }}>Rp {wallet.toLocaleString()}</p>
+  return (
+    <div className="container mt-5 p-3" style={{ width: "45%", borderRadius: 8, border: "2px solid #122DA1", backgroundColor: "#fff" }}>
+      <p className="h2 text-center" style={{ color: "#2185d0" }}>Your Wallet</p>
+      <p className="h2 text-center" style={{ color: "#2185d0" }}>Rp {wallet.toLocaleString()}</p>
       <div>
         <Tabs className="mt-3" defaultActiveKey="top-up">
           <Tab eventKey="top-up" title="Top-up">
             <Form className="mt-4" style={{ color: "#fff" }}>
               <Form.Group>
-                <Form.Label>Nominal Top-up:</Form.Label>
-                {!invalidForm ? <Form.Control type="number" placeholder="Nominal" onChange={e => handleChange(e)} value={form} />
-                : <Form.Control type="number" placeholder="Please input nominal Top-Up" onChange={e => handleChange(e)} isInvalid="true" />}
+                <Form.Label style={{color:'DimGray'}}>Nominal Top-up:</Form.Label>
+                {
+                  !invalidForm
+                  ?
+                  <Form.Control type="number" placeholder="Nominal" onChange={e => handleChange(e)} value={form} />
+                  :
+                  <Form.Control type="number" placeholder="Please input nominal Top-Up" onChange={e => handleChange(e)} isInvalid="true" />
+                }
               </Form.Group>
               <Form.Group>
-                <Form.Label>Please upload your payment slip</Form.Label>
+                <Form.Label style={{color:'DimGray'}}>Please upload your payment slip</Form.Label>
                 <Form.File onChange={handleImage} />
               </Form.Group>
             </Form>
             <div classname="d-flex justify-content-center">
-              <Button variant="outline-light" type="submit" size="lg" onClick={handleBtn}>
+              <Button variant="outline-primary" type="submit" size="lg" onClick={handleBtn}>
                 {
-                  loading ?
-                  <Loader type="Circles" color="#fff" height={20} width={60} />
-                  : 'Submit'
+                  loading
+                  ?
+                  <Loader type="Circles" height={20} width={60} />
+                  :
+                  'Submit'
                 }
               </Button>
             </div>
           </Tab>
-          <Tab eventKey="verification" title="Verification">
+          {/* <Tab eventKey="verification" title="Verification">
             <div className="mt-4">
               <Segment>
                 {renderVerification()}
               </Segment>
             </div>
-          </Tab>
+          </Tab> */}
         </Tabs>
       </div>
     </div>

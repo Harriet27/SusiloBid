@@ -20,11 +20,11 @@ const EditProfile = () => {
 
     useEffect(() => {
         dispatch(checkStatus(id));
-    }, [id]);
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (status === 'Banned') dispatch(Logout());
-    }, [status]);
+    }, [dispatch, status]);
 
     const [formInput, setFormInput] = useState({
         address: '',

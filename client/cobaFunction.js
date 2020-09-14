@@ -1,3 +1,5 @@
+const { useState } = require("react");
+
 const converter = arr => {
   const arrOfObj = [
     {day: 'Sunday', count: 0},
@@ -19,16 +21,23 @@ const converter = arr => {
   return arrOfObj;
 };
 
-const coba = converter([
+const coba1 = converter([
   {day: 'Monday', count: 2},
   {day: 'Thursday', count: 5},
   {day: 'Saturday', count: 9}
 ]);
 
-const coba = converter([
+const coba2 = converter([
   {day: 'Monday', count: 2},
   {day: 'Thursday', count: 5},
   {day: 'Saturday', count: 9}
 ]);
 
-console.log(coba);
+// console.log(coba1);
+// console.log(coba2);
+
+const INIT_STATE = {
+  id: 0,
+}
+const [data, setData] = useState(INIT_STATE)
+console.log(data);

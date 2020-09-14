@@ -63,7 +63,7 @@ const ManageUsers = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, ban this user!'
+      confirmButtonText: 'Yes, ban this user!',
     }).then((result) => {
       if (result.value) {
         dispatch(BanUser(id));
@@ -71,7 +71,7 @@ const ManageUsers = () => {
         Swal.fire(
           'Banned!',
           `${email} has been banned`,
-          'success'
+          'success',
         );
       };
     });
@@ -85,7 +85,7 @@ const ManageUsers = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Unban this user!'
+      confirmButtonText: 'Yes, Unban this user!',
     }).then((result) => {
       if (result.value) {
         dispatch(UnbanUser(id));
@@ -93,7 +93,7 @@ const ManageUsers = () => {
         Swal.fire(
           'Unbanned!',
           `${email} has been Unbanned`,
-          'success'
+          'success',
         );
       };
     });
@@ -112,26 +112,26 @@ const ManageUsers = () => {
           <td>
             {
               val.status === 'Active'
-                ?
-                <Button variant="danger" onClick={() => handleBan(val.user_id, val.email)}>
-                  {
-                    loading
-                      ?
-                      <Loader type="Circles" color="#009C95" height={20} width={20} />
-                      :
-                      'Ban'
-                  }
-                </Button>
-                :
-                <Button variant="primary" onClick={() => handleUnban(val.user_id, val.email)}>
-                  {
-                    loading
-                      ?
-                      <Loader type="Circles" color="#009C95" height={20} width={20} />
-                      :
-                      'Unban'
-                  }
-                </Button>
+              ?
+              <Button variant="danger" onClick={() => handleBan(val.user_id, val.email)}>
+                {
+                  loading
+                  ?
+                  <Loader type="Circles" color="#009C95" height={20} width={20} />
+                  :
+                  'Ban'
+                }
+              </Button>
+              :
+              <Button variant="primary" onClick={() => handleUnban(val.user_id, val.email)}>
+                {
+                  loading
+                  ?
+                  <Loader type="Circles" color="#009C95" height={20} width={20} />
+                  :
+                  'Unban'
+                }
+              </Button>
             }
           </td>
         </tr>
@@ -157,13 +157,13 @@ const ManageUsers = () => {
         <table class="ui single line table" style={{ marginLeft: '20px', marginRight: '20px' }}>
           <thead class="">
             <tr class="">
-              <th class="">User ID</th>
-              <th class="">Username</th>
-              <th class="">Email Address</th>
-              <th class="">Address</th>
-              <th class="">Phone</th>
-              <th class="">Status</th>
-              <th class="">Action</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>User ID</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Username</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Email Address</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Address</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Phone</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Status</th>
+              <th class="" style={{backgroundColor:'#333', color:'#fff'}}>Action</th>
             </tr>
           </thead>
           <tbody style={{ width: "800px" }}>

@@ -22,6 +22,7 @@ import {
   Auth,
 } from './pages';
 import Header from './components/Header';
+import ProfileModal from './components/ProfileModal';
 
 const App = () => {
 
@@ -52,27 +53,28 @@ const App = () => {
         :
         null
       }
-          <Switch>
-          <Route path='/' component={Home} exact />
-          <Route path='/register' component={Register} />
-          <Route path='/verify' component={Verify} />
-          <Route path='/product-detail' component={ProductDetail} />
-          <Route path='/wallet' component={WalletPage} />
-          <Route path='/bidding-page' component={BiddingPage} />
-          <Route path='/check-acc' component={Auth} />
-          <Route path='/edit-profile' component={EditProfile} />
-          <Route path='/cart' component={Cart} />
-          <Route path='/add-product' component={AddProduct} />
-          <Route path='/products' component={Product} />
-            {
-              role === 1
-              ?
-              <Route path='/internal' component={Admin} />
-              : 
-              null
-            }
-          <Route path='*' component={NotFound} />
-        </Switch>
+      <Switch>
+        <Route path='/' component={Home} exact />
+        <Route path='/register' component={Register} />
+        <Route path='/verify' component={Verify} />
+        <Route path='/product-detail' component={ProductDetail} />
+        <Route path='/wallet' component={WalletPage} />
+        <Route path='/bidding-page' component={BiddingPage} />
+        <Route path='/check-acc' component={Auth} />
+        <Route path='/edit-profile' component={EditProfile} />
+        <Route path='/cart' component={Cart} />
+        <Route path='/add-product' component={AddProduct} />
+        <Route path='/products' component={Product} />
+        <Route path='/modal' component={ProfileModal} />
+          {
+            role === 1
+            ?
+            <Route path='/internal' component={Admin} />
+            : 
+            null
+          }
+        <Route path='*' component={NotFound} />
+      </Switch>
     </Fragment>
   );
 };

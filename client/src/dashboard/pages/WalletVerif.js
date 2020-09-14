@@ -241,7 +241,7 @@ const WalletVerif = () => {
             {Moment(val.date_of_trx).format("Do MMMM YYYY, HH:mm:ss") + " WIB"}
           </td>
           <td>
-            <img className="img-zoom" src={API_URL + val.slip_image} alt="PYM image" height="80px" onClick={() => handleZoom(API_URL + val.slip_image)} />
+            <img className="img-zoom" src={API_URL + val.slip_image} alt="PYM img" height="80px" onClick={() => handleZoom(API_URL + val.slip_image)} />
           </td>
           <td>{val.status_trx}</td>
           <td>

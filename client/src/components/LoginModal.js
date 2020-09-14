@@ -14,7 +14,7 @@ const LoginModal = props => {
 
   const [formInput, setForm] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   const dispatch = useDispatch();
@@ -41,63 +41,58 @@ const LoginModal = props => {
       <div>
         {
           !failedLogin
-            ?
-            <>
-              <Modal.Body>
-                <Grid textAlign='center' style={{ height: '65vh' }} verticalAlign='middle'>
-                  <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' color='teal' textAlign='center'>
-                      Login
-                    </Header>
-                    <Form size='large'>
-                      <Segment stacked>
-                        <Form.Input fluid icon='user' iconPosition='left' name='username' placeholder='Username' onChange={handleChange} />
-                        <Form.Input
-                          fluid
-                          icon='lock'
-                          iconPosition='left'
-                          name='password'
-                          placeholder='Password'
-                          type='password'
-                          onChange={handleChange}
-                        />
-                        <Link to='/'>
-                          <Button color='teal' fluid size='large' onClick={handleBtn}>
-                            {
-                              loading
-                              ?
-                              <Loader type="Circles" color="#009C95" height={20} width={20} />
-                              :
-                              'Login'
-                            }
-                          </Button>
-                        </Link>
-                      </Segment>
-                    </Form>
-                    <Message>
-                      Do not have SusiloBid account? <Link to='/register' style={{ textDecoration: 'none', color: '#009C95' }} onClick={props.onHide}>Sign Up </Link>
-                    </Message>
-                  </Grid.Column>
-                </Grid>
-              </Modal.Body>
-            </>
-            :
-            <>
-              <Modal.Header className='d-flex justify-content-center'>
-                <Modal.Title className='text-center' style={{ color: '#009C95' }}>Login Failed</Modal.Title>
-              </Modal.Header>
-                <Modal.Body className='d-flex justify-content-center h2'>{error}</Modal.Body>
-              <Modal.Footer className='d-flex justify-content-center'>
-                <Button className='ui teal basic button' onClick={() => dispatch(LoginFailed())}>
-                  Try Again
+          ?
+          <>
+            <Modal.Body>
+              <Grid textAlign='center' style={{ height: '55vh' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                  <Header as='h1' color='blue' textAlign='center'>
+                    Login
+                  </Header>
+                  <Form size='large'>
+                    <Segment stacked>
+                      <Form.Input fluid icon='user' iconPosition='left' name='username' placeholder='Username' onChange={handleChange} />
+                      <Form.Input fluid icon='lock' iconPosition='left' name='password' placeholder='Password' type='password' onChange={handleChange} />
+                      <Link to='/'>
+                        <Button color='blue' fluid size='large' onClick={handleBtn}>
+                          {
+                            loading
+                            ?
+                            <Loader type="Circles" color="#009C95" height={20} width={20} />
+                            :
+                            'Login'
+                          }
+                        </Button>
+                      </Link>
+                    </Segment>
+                  </Form>
+                  <Message>
+                    Do not have SusiloBid account?&nbsp;
+                    <Link to='/register' style={{ color: '#2185d0' }} onClick={props.onHide}>
+                      Sign Up
+                    </Link>
+                  </Message>
+                </Grid.Column>
+              </Grid>
+            </Modal.Body>
+          </>
+          :
+          <>
+            <Modal.Header className='d-flex justify-content-center'>
+              <Modal.Title className='text-center' style={{ color: '#009C95' }}>Login Failed</Modal.Title>
+            </Modal.Header>
+              <Modal.Body className='d-flex justify-content-center h2'>{error}</Modal.Body>
+            <Modal.Footer className='d-flex justify-content-center'>
+              <Button className='ui teal basic button' onClick={() => dispatch(LoginFailed())}>
+                Try Again
+              </Button>
+              <Link to='/register'>
+                <Button className='ui teal button' onClick={props.onHide}>
+                  Register
                 </Button>
-                <Link to='/register'>
-                  <Button className='ui teal button' onClick={props.onHide}>
-                    Register
-                  </Button>
-                </Link>
-              </Modal.Footer>
-            </>
+              </Link>
+            </Modal.Footer>
+          </>
         }
         {
           role === 1

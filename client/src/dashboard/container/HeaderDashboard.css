@@ -12,7 +12,8 @@
 
 .header-dash {
     display: flex; 
-    background-color: #009C95 !important;
+    /* background-color: #009C95 !important; */
+    background-color: #333 !important;
     justify-content: space-between;
 }
 

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { GetCategory, postProduct } from '../redux/action';
+import { postProduct } from '../redux/action';
 
 // style
-import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react';
+// import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 
 const AddProduct = () => {

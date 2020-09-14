@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import Moment from 'moment';
 import ProductPagination from "../components/ProductPagination";
 
 // style
-import { Tabs, Tab, Button } from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap';
 
 const Product = () => {
   const productPerPage = 8;
@@ -142,7 +142,7 @@ console.log(getProduct);
               totalProducts={totalProducts}
               paginate={paginate}
             />
-          </div>    
+          </div>
           </Tab>
           <Tab eventKey="finish" title="Finish">
           <div className="row d-flex flex-wrap mt-4">

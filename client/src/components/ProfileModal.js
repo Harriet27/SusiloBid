@@ -35,44 +35,52 @@ const ProfileModal = props => {
         if (walletBalance) {
             setWallet(walletBalance);
         }
-    }, [wallet]);
-
-    
+    }, [dispatch, wallet, walletBalance]);
 
     return (
-        <Modal 
+        <div style={{borderRadius:'100px', overflow:'hidden'}}>
+            <Modal 
             {...props}
             className="myModal"
-            size="sm"
+            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            onClick={props.onHide}
-        >
-            <Modal.Header className='d-flex align-items-center' style={{ height: '15vh' }} closeButton> 
-                <img src={NoName} alt='No Pic' style={{ width: '6.5rem', height: '6.5rem' }}/>
-                <p className='h4' style={{ color: '#009C95' }}>{uName}</p>
-            </Modal.Header>
-            <Modal.Body>
-                <Container>
-                    <Row className='show-grid'>
-                        <Col xs={4} md={8}>
-                            <p style={{ color:'#939393' }}>Wallet Cash :</p>
-                        </Col>
-                        <Col xs={8} md={4}>
-                            {walletBalance ?
-                                <p style={{ color:'#939393' }}>{walletBalance} Rp</p>
-                            :
-                            <p style={{ color:'#939393' }}>0 Rp</p>}
-                        </Col>
-                        <Col xs={12} md={12} className='mt-3'>
-                            <Link to='/edit-profile' style={{ textDecoration:'none', color:'#939393' }}><p>Edit Profile</p></Link>
-                        </Col>
-                        <Col xs={12} md={12} className='mt-3'>
-                            <Link to='/' style={{ textDecoration:'none', color:'#939393' }}><p onClick={() => dispatch(Logout())}>Log Out <FaSignOutAlt className='ml-2'/></p></Link>
-                        </Col>
-                    </Row>
-                </Container>
-            </Modal.Body>
-        </Modal>
+            onClick={props.onHide}>
+                <Modal.Header className='d-flex align-items-center' style={{ height: '15vh' }} closeButton> 
+                    <img src={NoName} alt='No Pic' style={{ width: '6.5rem', height: '6.5rem' }}/>
+                    <p className='h4' style={{ color: '#2185d0' }}>{uName}</p>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+                        <Row className='show-grid'>
+                            <Col xs={4} md={8}>
+                                <p style={{ color:'#939393' }}>Wallet Cash :</p>
+                            </Col>
+                            <Col xs={8} md={4}>
+                                {
+                                    walletBalance
+                                    ?
+                                    <p style={{ color:'#939393' }}>{walletBalance} Rp</p>
+                                    :
+                                    <p style={{ color:'#939393' }}>0 Rp</p>
+                                }
+                            </Col>
+                            <Col xs={12} md={12} className='mt-3'>
+                                <Link to='/edit-profile' style={{ textDecoration:'none', color:'#939393' }}>
+                                    <p>Edit Profile</p>
+                                </Link>
+                            </Col>
+                            <Col xs={12} md={12} className='mt-3'>
+                                <Link to='/' style={{ textDecoration:'none', color:'#939393' }}>
+                                    <p onClick={() => dispatch(Logout())}>
+                                        Log Out <FaSignOutAlt className='ml-2'/>
+                                    </p>
+                                </Link>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Modal.Body>
+            </Modal>
+        </div>
     );
 };
 

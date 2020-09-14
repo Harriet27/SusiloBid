@@ -19,7 +19,6 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 
 const App = () => {
-
   const components = {
     1: <ManageUsers />,
     2: <ManageSellers />,

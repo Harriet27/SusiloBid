@@ -23,7 +23,7 @@ import BidPagination from "../components/BiddingPagination";
 // style
 import Ticker from "react-ticker";
 import {
-  Button,
+  // Button,
   Container,
   Grid,
   Segment,
@@ -76,7 +76,7 @@ const BiddingPage = (props) => {
     category,
     dueDate,
     image,
-    loadingTime,
+    // loadingTime,
     userId,
     logged,
     status
@@ -100,16 +100,17 @@ const BiddingPage = (props) => {
   const countDown = Moment(dueDate).format();
 
   useEffect(() => {
+    document.title = 'Bidding Page';
     dispatch(FetchDataByProductId(productId));
   }, [dispatch, productId]);
 
   useEffect(() => {
     dispatch(checkStatus(userId));
-  }, [userId]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (status === 'Banned') dispatch(Logout());
-  }, [status]);
+  }, [dispatch, status]);
 
   useEffect(() => {
     Axios.get(`${API_URL}/bidding/get/${productId}/${bidPerPage}/${offset}`)
@@ -150,6 +151,7 @@ const BiddingPage = (props) => {
       socket.disconnect();
       socket.close();
     };
+  // eslint-disable-next-line
   }, [username, productId]);
 
   useEffect(() => {
@@ -310,7 +312,9 @@ const BiddingPage = (props) => {
                   <p className="text-center">Rp. {wallet.toLocaleString()}</p>
                   <div className="d-flex justify-content-center">
                     <Link to={`/wallet?username=${username}`}>
-                      <Button className="ui teal button">Top Up</Button>
+                      <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}}>
+                        Top Up
+                      </button>
                     </Link>
                   </div>
                 </Segment>
@@ -330,7 +334,9 @@ const BiddingPage = (props) => {
                 <Segment>
                   <p className="text-center">{time}</p>
                   <div className="d-flex justify-content-center">
-                    <Button className="ui teal button">Reload</Button>
+                    <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}}>
+                      Reload
+                    </button>
                   </div>
                 </Segment>
               </Segment.Group>
@@ -339,7 +345,7 @@ const BiddingPage = (props) => {
           <Grid.Column style={{ width: "42rem" }}>
             <p
               className="h4 font-weight-bold text-center"
-              style={{ color: "#009C95" }}
+              style={{ color: "#2185d0" }}
             >
               Bid More ... Win More !!
             </p>
@@ -395,12 +401,10 @@ const BiddingPage = (props) => {
                       />
                     </div>
                     <div>
-                      <Button
-                        className="ui teal button ml-5"
-                        onClick={handleBtn}
-                      >
+                      <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}} 
+                      onClick={handleBtn}>
                         Submit
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </Segment>

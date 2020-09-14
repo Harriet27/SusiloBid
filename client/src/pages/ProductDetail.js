@@ -14,7 +14,7 @@ import { API_URL } from '../support/API_URL';
 import LoginModal from '../components/LoginModal';
 
 // style
-import { Button } from 'semantic-ui-react';
+// import { Button } from 'semantic-ui-react';
 import { Container, Row, Col } from "react-bootstrap";
 
 
@@ -23,11 +23,7 @@ const ProductDetail = props => {
   let productId = props.location.search.split('=')[1];
 
   const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(FetchDataByProductId(productId));
-  }, [dispatch, productId]);
-  
+
   const status = useSelector(({ status }) => status.status);
   const modalShow = useSelector(({ modal }) => modal.modalShow);
   const logged = useSelector(({ auth }) => auth.logged);
@@ -37,12 +33,17 @@ const ProductDetail = props => {
   const {product_name, product_id, starting_price, seller, product_desc, category, due_date, image_path} = data;
 
   useEffect(() => {
+    document.title = `Product Detail`;
+    dispatch(FetchDataByProductId(productId));
+  }, [dispatch, productId]);
+
+  useEffect(() => {
     dispatch(checkStatus(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
       if (status === 'Banned') dispatch(Logout());
-  }, [status]);
+  }, [dispatch, status]);
   
   if (role === 1) {
     return <Redirect to='/internal' />
@@ -60,18 +61,22 @@ const ProductDetail = props => {
         </div>
         <div className="col d-flex align-items-center">
           <Container className="img-thumbnail">
-            <h2>{product_name}</h2>
+            <h2 style={{marginTop:'10px', marginLeft:'5px'}}>
+              {product_name}
+            </h2>
             <hr />
             <br />
             <div className="container">
               <div className="row">
                 <div className="col-7">
                   <h4>Starting Price</h4>
-                  <h2 style={{ color: "#009C95" }}>Rp {starting_price ? starting_price.toLocaleString() : null}</h2>
+                  <h2 style={{ color: "#2185d0" }}>Rp {starting_price ? starting_price.toLocaleString() : null}</h2>
                 </div>
                 <div className="col-5 d-flex align-items-center">
                   <Link to={`/bidding-page?product_id=${product_id}`}>
-                    <Button className="ui teal button" size="lg" onClick={!logged ? () => dispatch(setModal()) : null} >Bid Now</Button>
+                    <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}} onClick={!logged ? () => dispatch(setModal()) : null}>
+                      Bid Now
+                    </button>
                   </Link>
                 </div>
               </div>

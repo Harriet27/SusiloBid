@@ -57,7 +57,6 @@ module.exports = {
   //     ORDER BY b.time DESC
   //     LIMIT ${limit} OFFSET ${offset}
   //   `;
-
   //   let walletSql = `SELECT wallet FROM users WHERE user_id = ${bidder}`;
   //   const user = userJoin(null, null, productId);
   //   try {
@@ -134,7 +133,7 @@ module.exports = {
       let currentWallet = await dba(checkWallet);
       // console.log(countBid);
       if (countBid.length === 0) {
-        console.log('masuk if1')
+        // console.log('masuk if1')
         if (currentWallet[0].wallet < offer) {
           res.status(200).send({
             status: "Failed",
@@ -157,7 +156,7 @@ module.exports = {
           });
         }
       } else {
-        console.log('masuk else1');
+        // console.log('masuk else1');
         if (currentWallet[0].wallet < (offer- countBid[0].offer)){
           res.status(200).send({
             status: "Failed",
@@ -167,7 +166,7 @@ module.exports = {
           let postSql = `INSERT INTO bid (product_id, bidder_id, offer, count, time) VALUES (${productId}, ${bidder}, ${offer}, ${countBid[0].count +1}, '${time}')`;
           await dba(postSql);
           let response = await dba(getSql);
-          console.log(countBid);
+          // console.log(countBid);
           let updateWallet = `UPDATE users SET wallet = (wallet - (${offer} - ${countBid[0].offer})) WHERE user_id = ${bidder}`;
           await dba(updateWallet);
           let wallet = await dba(checkWallet);

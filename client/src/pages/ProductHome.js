@@ -18,11 +18,11 @@ import Loader from 'react-loader-spinner';
 import './ProductHome.css';
 
 // sample image
-import SampleImage from '../asset/SSB-1.jpeg'
+// import SampleImage from '../asset/SSB-1.jpeg'
 
 const ProductHome = () => {
 
-  const MAX_LENGTH = 75;
+  const MAX_LENGTH = 20;
   const productPerPage = 8;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,7 +51,7 @@ const ProductHome = () => {
                 <Card.Text>
                   {`${val.product_desc ? val.product_desc.substring(0, MAX_LENGTH).toUpperCase(): null}...`}
                 </Card.Text>
-                <Card.Title className="text-center" style={{ color: "#009C95" }}>Rp {val.starting_price.toLocaleString()}</Card.Title>
+                <Card.Title className="text-center" style={{ color: "#2185d0" }}>Rp {val.starting_price.toLocaleString()}</Card.Title>
               </Card.Body>
             </Card>
           </Link>
@@ -75,7 +75,7 @@ const ProductHome = () => {
               totalProducts={totalProducts}
               paginate={paginate}
             />
-          </div>         
+          </div>
           <div className="row d-flex flex-wrap mt-4">
             {renderProduct()}
           </div>

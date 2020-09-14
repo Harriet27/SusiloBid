@@ -46,14 +46,17 @@ const Report = () => {
 
   useEffect(() => {
     revenueChart()
+  // eslint-disable-next-line
   }, [gTotalBid, gCount]);
 
   useEffect(() => {
     ctgChart();
+  // eslint-disable-next-line
   }, [popularCtg, countPopCtg]);
 
   useEffect(() => {
     mostBidChart();
+  // eslint-disable-next-line
   }, [gMostBidder, gTotalBid]);
 
   useEffect(() => {
@@ -62,7 +65,7 @@ const Report = () => {
     dispatch(MostPopularCtg(render));
     dispatch(TotalSell(render));
     dispatch(WeeklyBid(render));
-  }, [render]);
+  }, [dispatch, render]);
 
   useEffect(() => {
     setRevenue(gRevenue);

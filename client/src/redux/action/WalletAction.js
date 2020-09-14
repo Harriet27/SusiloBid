@@ -9,7 +9,6 @@ export const WalletAction = userId => {
         type: GET_WALLET_START
       });
       let res = await Axios.get(`${API_URL}/wallet/get-wallet/${userId}`);
-      
       dispatch({
         type: GET_WALLET_SUCCESS,
         payload: res.data.data[0].wallet

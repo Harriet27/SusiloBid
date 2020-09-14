@@ -80,7 +80,7 @@ const ActiveAuctions = () => {
     } else {
       dispatch(FetchDataCloseCtg(AuctPerPage, offset, categ));
     }
-  }, [dispatch, render]);
+  }, [dispatch, render, offset]);
   
   useEffect(() => {
     if (gCategory) {
@@ -91,7 +91,7 @@ const ActiveAuctions = () => {
       });
       setCtg({...ctg, ...obj});
     }
-  }, [gCategory]);
+  }, [gCategory, ctg]);
 
   useEffect(() => {
     if (getAuct) setAuct(getAuct);
@@ -161,7 +161,7 @@ const ActiveAuctions = () => {
               {invLink && invNum ? 
                 <Row>
                   <Col className="font-weight-bold" sm={2}>Invoice</Col>
-                  <Col className="font-weight-bold" sm={10}><a href={`http://localhost:2000${invLink}`} target="_blank">: {invNum}</a></Col>
+                  <Col className="font-weight-bold" sm={10}><a href={`http://localhost:2000${invLink}`} target="_blank" rel="noopener noreferrer">: {invNum}</a></Col>
                 </Row>
                 : null
               }

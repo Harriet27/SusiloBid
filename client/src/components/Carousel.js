@@ -15,24 +15,20 @@ const CarouselPage = () => {
 
   return (
     <div className="d-flex justify-content-center mt-3">
-      <Card style={{ borderRadius: '10px' }}>
+      <Card style={{ borderRadius: '20px' }}>
         <Card.Body>
           <Carousel activeIndex={index} onSelect={handleSelect} style={{ width : '60em', height: '20em' }}>
             <Carousel.Item>
               <img
-                style={{ height: '20em' }}
+                style={{ height: '20em', borderRadius: '20px' }}
                 className="d-block w-100"
                 src={Slider1}
                 alt="First slide"
               />
-              <Carousel.Caption>
-                <h2 style={{ color: '#9932CC', fontWeight: '25px' }}>Trusted Online Auctions</h2>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img
-                style={{ height: '20em' }}
+                style={{ height: '20em', borderRadius: '20px' }}
                 className="d-block w-100"
                 src={Slider2}
                 alt="Second slide"
@@ -40,7 +36,7 @@ const CarouselPage = () => {
             </Carousel.Item>
             <Carousel.Item>
               <img
-                style={{ height: '20em' }}
+                style={{ height: '20em', borderRadius: '20px' }}
                 className="d-block w-100"
                 src={Slider3}
                 alt="Third slide"

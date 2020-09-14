@@ -52,7 +52,7 @@ export const Login = (username, password) => {
       .then(res => {
         // console.log(res.data.status)
         let { user_id, username, email, address, phone, role_id, token, verification_id, status } = res.data.data;
-        // console.log(typeof(res.data))
+        console.log(res.data);
         dispatch({
           type: LOGIN,
           payload: {

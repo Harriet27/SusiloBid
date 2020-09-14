@@ -21,7 +21,7 @@ import io from 'socket.io-client';
 import { API_URL } from '../support/API_URL';
 
 // style
-import { Segment, Checkbox, Form, Input, Label, Button } from 'semantic-ui-react';
+import { Segment, Checkbox, Form, Input, Label } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
 const FilterHome = () => {
@@ -32,7 +32,7 @@ const FilterHome = () => {
   const [min, setMin] = useState('');
   const [time, setTime] = useState(null);
   
-  const productPerPage = 8;
+  // const productPerPage = 8;
 
   const dispatch = useDispatch();
   const gCategory = useSelector(state => state.product.category);
@@ -109,7 +109,7 @@ const FilterHome = () => {
         <Segment>
           <Form>
             <Form.Field>
-              <p className="font-weight-bold">Category<span style={{ color: "#009C95" }} className="ml-2 search-btn" onClick={handleReset}>(Reset)</span></p>
+              <p className="font-weight-bold">Category<span style={{ color: "#2185d0" }} className="ml-2 search-btn" onClick={handleReset}>(Reset)</span></p>
             </Form.Field>
             {renderCheckbox()}
           </Form>
@@ -128,7 +128,9 @@ const FilterHome = () => {
           </Input>
         </div>
         <div className="d-flex justify-content-center mb-4">
-          <Button color="teal" onClick={handleClick}>Search</Button>
+          <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}} onClick={handleClick}>
+            Search
+          </button>
         </div>
       </Segment.Group>
 
@@ -140,11 +142,9 @@ const FilterHome = () => {
           <Segment>
             <p className="text-center">{time}</p>
             <div className="d-flex justify-content-center">
-              <Button
-                className="ui teal button"
-              >
+              <button style={{color:'white', backgroundColor:'#2185d0', border:'none', borderRadius:'5px', padding:'8px 20px', fontWeight:'600'}}>
                 Reload
-              </Button>
+              </button>
             </div>
           </Segment>
         </Segment.Group>

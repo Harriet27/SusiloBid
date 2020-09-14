@@ -17,7 +17,7 @@ const SiderDashboard = ({handleClick}) => {
         mode="inline"
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
-        style={{ height: "100%", borderRight: 0 }}
+        style={{ height:"100%", borderRight:0}}
       >
         <SubMenu
           key="sub1"
@@ -55,7 +55,7 @@ const SiderDashboard = ({handleClick}) => {
           }
         >
           <Menu.Item key="3" onClick={handleClick}>
-            Wallet Verif
+            Wallet Verification
           </Menu.Item>
         </SubMenu>
         <SubMenu
@@ -68,7 +68,7 @@ const SiderDashboard = ({handleClick}) => {
           }
         >
           <Menu.Item key="4" onClick={handleClick}>
-            Set Bidding Room
+            Bidding Rooms
           </Menu.Item>
           <Menu.Item key="5" onClick={handleClick}>
             Active Auctions

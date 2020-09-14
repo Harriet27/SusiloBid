@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Input, FormGroup, Form, Label } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { confirmPass } from '../redux/action';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Auth = () => {
     const dispatch = useDispatch();

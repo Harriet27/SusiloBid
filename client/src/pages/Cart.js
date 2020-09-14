@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, checkStatus, Logout } from '../redux/action';
 import { Redirect } from 'react-router-dom';
@@ -19,11 +19,11 @@ const Cart = () => {
 
     useEffect(() => {
         dispatch(checkStatus(id));
-    }, [id]);
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (status === 'Banned') dispatch(Logout());
-    }, [status]);
+    }, [dispatch, status]);
 
     const renderCartA = () => {
         return cartList.map((val,idx) => {

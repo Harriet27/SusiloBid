@@ -38,7 +38,9 @@ const AdminModal = props => {
                             <Link style={{ textDecoration:'none', color:'#939393' }}><p>Edit Profile</p></Link>
                         </Col>
                         <Col xs={12} md={12} className='mt-3'>
-                            <Link to='/' style={{ textDecoration:'none', color:'#939393' }}><p onClick={() => dispatch(Logout())}>Log Out <FaSignOutAlt className='ml-2'/></p></Link>
+                            <Link to='/' style={{ textDecoration:'none', color:'#939393' }}>
+                                <p onClick={() => dispatch(Logout())}>Log Out <FaSignOutAlt className='ml-2'/></p>
+                            </Link>
                         </Col>
                     </Row>
                 </Container>
